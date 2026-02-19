@@ -1,22 +1,26 @@
 
 
-import React from 'react'
+import axios from 'axios';
+import React, { useContext } from 'react'
 // import { useContext } from 'react';
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from './context/AuthContext';
+import { BASE_URL } from './constant';
 
 // import axios from 'axios';
  
 
 const Login = () => {
   
-    const[email,setEmail]=useState('');
-      const[password,setPassword]=useState('');
+    const[email,setEmail]=useState('tushar@gmail.com');
+      const[password,setPassword]=useState('Tushar@123');
+      const {setUser}=useContext(AuthContext)
    
-
+    const navigate=useNavigate()
          
                    
-        //    const navigate=useNavigate()
+  
      
      
 
@@ -26,18 +30,23 @@ const Login = () => {
             email:email,
             password:password
           }
+            
+          try{
 
-        //   const res=await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`,UserData,  { withCredentials: true })
-
-    
-
-
-
-
+            const res=await axios.post(`${BASE_URL}/auth/login`,UserData,{withCredentials:true})
+  
+             setUser(res.data);
+               
+  
+             if(res.status==200){
+             return navigate('/')
           }
-        //   setEmail('')
-        //   setPassword('')
-
+           }catch(err){
+            console.log(err)
+           }
+        
+          }
+   
         
 
   return (

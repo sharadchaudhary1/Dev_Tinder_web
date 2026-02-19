@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from "./constant";
+import axios from "axios";
 
 export const Register = () => {
   const [email, setEmail] = useState("");
@@ -25,16 +27,32 @@ export const Register = () => {
       about: about,
     };
 
-    //   const res=await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`,newUser,  { withCredentials: true })
+    try{
 
+      const res=await axios.post(`${BASE_URL}/auth/register`,newUser)
+
+      if(res.status==200){
+        alert("registered successfully")
+      }
+        
     setEmail("");
     setPassword("");
     setFirstname("");
     setLastname("");
+    setGender("")
+    setSkills([])
+    setAge(1);
+    setAbout("")
+
+    }catch(err){
+        console.log(err)
+    }
+
+   
   }
 
   return (
-    <div className="flex flex-col justify-between  bg-red-300 ">
+    <div className="flex flex-col justify-between  bg-red-400 ">
       <div className="p-7">
         <form onSubmit={handleSubmit} className="flex flex-col">
           <h2 className="text-2xl mb-3 text-center font-semibold text-gray-800">

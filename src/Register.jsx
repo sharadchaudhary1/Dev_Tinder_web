@@ -10,7 +10,7 @@ export const Register = () => {
   const [lastname, setLastname] = useState("");
   const [age, setAge] = useState(1);
   const [gender, setGender] = useState("");
-  const [skills, setSkills] = useState([]);
+  const [skills, setSkills] = useState([""]);
   const [about, setAbout] = useState("");
 
   async function handleSubmit(e) {

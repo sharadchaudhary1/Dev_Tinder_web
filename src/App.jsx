@@ -8,6 +8,9 @@ import Profile from "./components/Profile"
 import UpdateProfile from "./components/UpdateProfile"
 import ChangePassword from "./components/ChangePassword"
 
+import Requests from "./components/Requests"
+import Connections from "./components/Connections"
+
 
 
 
@@ -27,6 +30,8 @@ function App() {
         <Route path="/" element={<Feed/>}/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/updateProfile" element={<UpdateProfile/>}/>
+        <Route path="/friends" element={<Connections/>}/>
+           <Route path="/requests" element={<Requests/>}/>
 
      </Route>
       

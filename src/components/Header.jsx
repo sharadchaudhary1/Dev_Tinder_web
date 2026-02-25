@@ -97,6 +97,28 @@ const Header = () => {
                 Change Password
               </button>
 
+
+               <button
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/friends");
+                }}
+                className="w-full text-left px-4 py-2 hover:bg-gray-100"
+              >
+                Friends
+              </button>
+
+
+               <button
+                onClick={() => {
+                  setOpen(false);
+                  navigate("/requests");
+                }}
+                className="w-full text-left px-4 py-2 hover:bg-gray-100"
+              >
+                Friend Requests
+              </button>
+
               <hr />
 
               <button

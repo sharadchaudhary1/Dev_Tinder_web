@@ -2,28 +2,24 @@
 
 import axios from 'axios';
 import React, { useContext } from 'react'
-// import { useContext } from 'react';
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from './context/AuthContext';
-import { BASE_URL } from './constant';
+import { AuthContext } from '../context/AuthContext';
 
-// import axios from 'axios';
+
+
  
 
 const Login = () => {
   
-    const[email,setEmail]=useState('tushar@gmail.com');
-      const[password,setPassword]=useState('Tushar@123');
+    const[email,setEmail]=useState('');
+      const[password,setPassword]=useState('');
       const {setUser}=useContext(AuthContext)
+
+     
    
     const navigate=useNavigate()
          
-                   
-  
-     
-     
-
        async function handleSubmit(e){
           e.preventDefault()
           const UserData={
@@ -33,7 +29,7 @@ const Login = () => {
             
           try{
 
-            const res=await axios.post(`${BASE_URL}/auth/login`,UserData,{withCredentials:true})
+            const res=await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`,UserData,{withCredentials:true})
   
              setUser(res.data);
                
@@ -51,14 +47,14 @@ const Login = () => {
 
   return (
 
-    <div className=' flex items-center h-screen w-screen justify-center bg-red-400 '>
+    <div className=' flex items-center h-screen w-screen justify-center  bg-[radial-gradient(circle,_#fff7ed,_#ffe4e6,_#fbcfe8)]'>
 
-    <div className="flex flex-col justify-between h-[350px] w-[500px] rounded-xl  bg-red-300" >
+    <div className="flex flex-col justify-between h-[350px] w-[500px] rounded-xl   bg-[radial-gradient(circle,_#fff7ed,_#ffe4e6,_#fbcfe8)]" >
 
     <div className='p-7'>
        
-        <form onSubmit={(e)=>handleSubmit(e)} className='flex  flex-col bg-red-300'>
-            <h2 className='text-2xl mb-3  text-center ' >Login to DevTinder</h2>
+        <form onSubmit={(e)=>handleSubmit(e)} className='flex  flex-col  bg-[radial-gradient(circle,_#fff7ed,_#ffe4e6,_#fbcfe8)]'>
+            <h2 className='text-2xl mb-3  text-center ' >Login to Matchify❤️</h2>
                
             <label className="block text-sm font-medium text-gray-600">Email</label>
             <input 

@@ -1,25 +1,19 @@
 import { Route, Routes } from "react-router-dom"
-import Login from "./Login"
-import { Register } from "./Register"
+import Login from "./components/Login"
+import { Register } from "./components/Register"
 import Header from "./components/Header"
-import Feed from "./Feed"
-import { AuthContext } from "./context/AuthContext"
 import Profile from "./components/Profile"
 import UpdateProfile from "./components/UpdateProfile"
 import ChangePassword from "./components/ChangePassword"
-
 import Requests from "./components/Requests"
 import Connections from "./components/Connections"
+import Chat from "./components/Chat"
+import Feed from "./components/Feed"
 
 
 
 
 function App() {
-
-
-
-
-
 
   return (
     <>
@@ -39,7 +33,7 @@ function App() {
      
       <Route path="/login" element={<Login/>} />
       <Route path="/register" element={<Register/>} />
-     
+      <Route path="/chat/:id" element={<Chat/>} />
 
      </Routes>
     

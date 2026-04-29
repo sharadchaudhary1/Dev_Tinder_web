@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { FaHeart, FaTimes, FaChevronLeft, FaChevronRight,} from "react-icons/fa";
-import { BASE_URL } from "./constant";
-import ProfileCardSkeleton from "./components/FallbackUi";
+import ProfileCardSkeleton from "./FallbackUi";
+import { BASE_URL } from "../constant";
 
 const DEFAULT_PROFILE =
   "https://cdn-icons-png.flaticon.com/512/149/149071.png";
@@ -11,11 +11,14 @@ const Feed = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeImageIndex, setActiveImageIndex] = useState({});
+ 
+
+
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/user/feed`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/feed`, {
           withCredentials: true,
         });
         setUsers(res.data);
@@ -90,7 +93,14 @@ const Feed = () => {
   }
 
   const user = users[0];
-  const photos = user.photos?.length ? user.photos : [DEFAULT_PROFILE];
+  // const photos = user.images?.length ? user.images : [DEFAULT_PROFILE];
+
+  const photos = user.images?.length
+  ? user.images
+  : user.profilePicture
+  ? [user.profilePicture]
+  : [DEFAULT_PROFILE];
+
   const currentIndex = activeImageIndex[user._id] || 0;
 
   return (

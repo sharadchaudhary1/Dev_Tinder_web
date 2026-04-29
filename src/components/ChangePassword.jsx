@@ -12,9 +12,9 @@ const ChangePassword = () => {
     
        
     const[error,setError]=useState("")
-    const [oldPassword,setOldPassword]=useState("Tushar@123")
-     const [newPassword,setNewPassword]=useState("Tushar@12")
-      const [confirmPassword,setConfirmPassword]=useState("Tushar@12")
+    const [oldPassword,setOldPassword]=useState("")
+     const [newPassword,setNewPassword]=useState("")
+      const [confirmPassword,setConfirmPassword]=useState("")
 
       useEffect(() => {
   if (!user) {
@@ -62,7 +62,7 @@ const ChangePassword = () => {
     <div className='flex h-screen w-full  bg-red-200 items-center justify-center ' >  
 
           
-        <form className='flex  w-1/2 p-4 rounded-xl  items-center flex-col gap-5 bg-red-400 ' onSubmit={handlePasswordChange}>
+        <form className='flex  w-1/2 p-4 rounded-2xl  items-center flex-col gap-5  bg-[radial-gradient(circle,_#fff7ed,_#ffe4e6,_#fbcfe8)] ' onSubmit={handlePasswordChange}>
                  <h2 className='font-bold text-gray-700 text-xl'> Change Password</h2>
          <div className='flex w-full flex-col gap-2'>
             
@@ -103,7 +103,7 @@ const ChangePassword = () => {
            </div>
            <p className='text-sm text-blue-900'>{error}</p>
 
-           <button type='submit' className='px-4 py-2  text-gray-700 font-semibold text-xl bg-green-500 w-1/2  rounded'>change</button>
+           <button type='submit' className='px-4 py-2  text-gray-800 font-semibold text-xl bg-pink-400 hover:bg-pink-500 w-1/2  rounded-xl'>change</button>
 
         </form>
     </div>

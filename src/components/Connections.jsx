@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constant";
+import { BsChatDotsFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const [friends, setFriends] = useState([]);
@@ -18,7 +20,7 @@ const Connections = () => {
       });
       setFriends(res.data.friends || res.data);
     } catch (err) {
-      setError("Failed to load connections");
+      setError("Failed to load connections",err);
     } finally {
       setLoading(false);
     }
@@ -28,7 +30,7 @@ const Connections = () => {
   if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="max-w-4xl mx-auto px-4 py-6 ">
       <h2 className="text-2xl font-semibold mb-6">👥 My Connections</h2>
 
       {friends.length === 0 && (
@@ -39,8 +41,9 @@ const Connections = () => {
         {friends.map(friend => (
           <div
             key={friend._id}
-            className="border rounded-lg p-4 shadow-sm hover:shadow-md transition"
+            className=" flex justify-between border rounded-lg p-4 shadow-sm hover:shadow-md transition"
           >
+            <div>
             <h4 className="text-lg font-medium">
               {friend.firstname} {friend.lastname}
             </h4>
@@ -56,6 +59,10 @@ const Connections = () => {
             <p className="text-sm text-gray-700 mt-2">
               {friend.about}
             </p>
+          </div>
+             <div className="flex items-end">
+              <Link className="text-2xl" to={`/chat/${friend._id}`}> <BsChatDotsFill /> </Link>
+             </div>
           </div>
         ))}
       </div>

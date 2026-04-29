@@ -11,16 +11,15 @@ const Requests = () => {
   useEffect(() => {
     fetchRequests();
   }, []);
-
   const fetchRequests = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/user/request/recieved`, {
         withCredentials: true
       });
-      console.log(res)
+     
       setRequests( res.data);
     } catch (err) {
-      setError("Failed to load requests");
+      setError("Failed to load requests",err);
     } finally {
       setLoading(false);
     }

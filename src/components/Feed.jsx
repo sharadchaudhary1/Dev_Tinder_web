@@ -18,7 +18,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/feed`, {
+        const res = await axios.get(`${BASE_URL}/user/feed`, {
           withCredentials: true,
         });
         setUsers(res.data);

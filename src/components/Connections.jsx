@@ -15,7 +15,7 @@ const Connections = () => {
 
   const fetchConnections = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/user/connections`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/connections`, {
         withCredentials: true
       });
       setFriends(res.data.friends || res.data);

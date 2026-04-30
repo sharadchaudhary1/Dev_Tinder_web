@@ -18,7 +18,7 @@ const Feed = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/user/feed`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/feed`, {
           withCredentials: true,
         });
         setUsers(res.data);
@@ -43,7 +43,7 @@ const Feed = () => {
 
   const handleInterested = async (userId) => {
     await axios.post(
-      `${BASE_URL}/request/sent/interested/${userId}`,
+      `${import.meta.env.VITE_API_URL}/request/sent/interested/${userId}`,
       {},
       { withCredentials: true }
     );
@@ -52,7 +52,7 @@ const Feed = () => {
 
   const handleReject = async (userId) => {
     await axios.post(
-      `${BASE_URL}/request/sent/ignored/${userId}`,
+      `${import.meta.env.VITE_API_URL}/request/sent/ignored/${userId}`,
       {},
       { withCredentials: true }
     );

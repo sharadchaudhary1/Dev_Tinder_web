@@ -48,8 +48,8 @@ const ChangePassword = () => {
         }
            try{
 
-               const res=await axios.patch(`${BASE_URL}/profile/passwordupdate`,newpass,{withCredentials:true})
-               console.log(res)
+               const res=await axios.patch(`${import.meta.env.VITE_API_URL}/profile/passwordupdate`,newpass,{withCredentials:true})
+             
            }
            catch(err){
             console.log(err)

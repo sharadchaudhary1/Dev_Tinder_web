@@ -3,5 +3,5 @@ import { BASE_URL } from "../constant";
 
 export const createSocketConnection =()=>{
 
-    return io(`${BASE_URL}`)
+    return io(`${import.meta.env.VITE_API_URL}`)
 }

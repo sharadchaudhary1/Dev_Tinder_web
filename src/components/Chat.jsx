@@ -57,7 +57,7 @@ const Chat = () => {
       try {
         setIsLoading(true)
       
-        const res = await axios.get(`${BASE_URL}/user/chat/${id}`,{withCredentials:true})
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/chat/${id}`,{withCredentials:true})
       
         setChatUser(res.data)
         
@@ -81,7 +81,7 @@ const Chat = () => {
     const fetchMessages = async () => {
       try {
        
-        const res = await axios.get(`${BASE_URL}/chats/${id}`,{withCredentials:true})
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/chats/${id}`,{withCredentials:true})
 
       const messages=res.data?.messages || []
 

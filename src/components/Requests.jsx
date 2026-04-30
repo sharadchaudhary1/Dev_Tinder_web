@@ -13,7 +13,7 @@ const Requests = () => {
   }, []);
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(`${BASE_URL}/user/request/recieved`, {
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/request/recieved`, {
         withCredentials: true
       });
      
@@ -26,14 +26,14 @@ const Requests = () => {
   };
 
   const handleAccept = async (id) => {
-    await axios.post(`${BASE_URL}/request/review/accepted/${id}`, {}, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/request/review/accepted/${id}`, {}, {
       withCredentials: true
     });
     fetchRequests();
   };
 
   const handleReject = async (id) => {
-    await axios.post(`${BASE_URL}/request/review/rejected/${id}`, {}, {
+    await axios.post(`${import.meta.env.VITE_API_URL}/request/review/rejected/${id}`, {}, {
       withCredentials: true
     });
     fetchRequests();

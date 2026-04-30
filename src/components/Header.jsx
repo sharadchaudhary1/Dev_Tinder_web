@@ -15,7 +15,7 @@ const Header = () => {
    useEffect(() => {
     async function fetchUser() {
       try {
-        const res = await axios.get(`${BASE_URL}/profile/get`, {
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/profile/get`, {
           withCredentials: true,
         });
 
@@ -36,7 +36,7 @@ const Header = () => {
         
         try{
 
-           await axios.post(`${BASE_URL}/auth/logout`,{},{withCredentials:true})
+           await axios.post(`${import.meta.env.VITE_API_URL}/auth/logout`,{},{withCredentials:true})
     
            setUser(null);
           

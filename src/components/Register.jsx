@@ -39,7 +39,7 @@ export const Register = () => {
 
     try {
       const res = await axios.post(
-        `${BASE_URL}/auth/register`,
+        `${import.meta.env.VITE_API_URL}/auth/register`,
         newUser
       );
 

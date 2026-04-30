@@ -51,7 +51,7 @@ const UpdateProfile = () => {
     };
 
     try {
-      await axios.patch(`${BASE_URL}/profile/update`, updatedUser, {
+      await axios.patch(`${import.meta.env.VITE_API_URL}/profile/update`, updatedUser, {
         withCredentials: true,
       });
 

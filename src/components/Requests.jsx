@@ -29,7 +29,7 @@ const Requests = () => {
   };
 
   const handleAccept = async (id) => {
-    
+
     await axios.post(
       `${import.meta.env.VITE_API_URL}/request/review/accepted/${id}`,
       {},

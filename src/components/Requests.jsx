@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../constant";
@@ -13,29 +12,42 @@ const Requests = () => {
   }, []);
   const fetchRequests = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/user/request/recieved`, {
-        withCredentials: true
-      });
-     
-      setRequests( res.data);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_URL}/user/request/recieved`,
+        {
+          withCredentials: true,
+        }
+      );
+
+      setRequests(res.data);
     } catch (err) {
-      setError("Failed to load requests",err);
+      setError("Failed to load requests", err);
+      console.log(err.message)
     } finally {
       setLoading(false);
     }
   };
 
   const handleAccept = async (id) => {
-    await axios.post(`${import.meta.env.VITE_API_URL}/request/review/accepted/${id}`, {}, {
-      withCredentials: true
-    });
+    
+    await axios.post(
+      `${import.meta.env.VITE_API_URL}/request/review/accepted/${id}`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
     fetchRequests();
   };
 
   const handleReject = async (id) => {
-    await axios.post(`${import.meta.env.VITE_API_URL}/request/review/rejected/${id}`, {}, {
-      withCredentials: true
-    });
+    await axios.post(
+      `${import.meta.env.VITE_API_URL}/request/review/rejected/${id}`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
     fetchRequests();
   };
 
@@ -51,7 +63,7 @@ const Requests = () => {
       )}
 
       <div className="grid gap-4">
-        {requests.map(req => (
+        {requests.map((req) => (
           <div
             key={req._id}
             className="border rounded-lg p-4 shadow-sm hover:shadow-md transition"
@@ -60,9 +72,7 @@ const Requests = () => {
               {req.fromUserId.firstname} {req.fromUserId.lastname}
             </h4>
 
-            <p className="text-sm text-gray-600">
-              Age: {req.fromUserId.age}
-            </p>
+            <p className="text-sm text-gray-600">Age: {req.fromUserId.age}</p>
             <p className="text-sm text-gray-600">
               Gender: {req.fromUserId.gender}
             </p>
@@ -72,9 +82,7 @@ const Requests = () => {
               {req.fromUserId.skills?.join(", ") || "N/A"}
             </p>
 
-            <p className="text-sm text-gray-700 mt-2">
-              {req.fromUserId.about}
-            </p>
+            <p className="text-sm text-gray-700 mt-2">{req.fromUserId.about}</p>
 
             <div className="flex gap-3 mt-4">
               <button

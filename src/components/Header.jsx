@@ -41,7 +41,7 @@ const Header = () => {
            setUser(null);
           
         }catch(err){
-            console.log(err)
+            console.log(err.message)
         }
 
 

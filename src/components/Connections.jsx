@@ -20,6 +20,7 @@ const Connections = () => {
       });
       setFriends(res.data.friends || res.data);
     } catch (err) {
+      console.log(err.message)
       setError("Failed to load connections",err);
     } finally {
       setLoading(false);

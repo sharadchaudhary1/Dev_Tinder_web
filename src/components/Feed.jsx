@@ -42,21 +42,31 @@ const Feed = () => {
   };
 
   const handleInterested = async (userId) => {
-    await axios.post(
-      `${import.meta.env.VITE_API_URL}/request/sent/interested/${userId}`,
-      {},
-      { withCredentials: true }
-    );
-    removeUserFromFeed(userId);
+    try{
+
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/request/sent/interested/${userId}`,
+        {},
+        { withCredentials: true }
+      );
+      removeUserFromFeed(userId);
+    }catch(err){
+      console.log(err.message)
+    }
   };
 
   const handleReject = async (userId) => {
-    await axios.post(
-      `${import.meta.env.VITE_API_URL}/request/sent/ignored/${userId}`,
-      {},
-      { withCredentials: true }
-    );
-    removeUserFromFeed(userId);
+    try{
+
+      await axios.post(
+        `${import.meta.env.VITE_API_URL}/request/sent/ignored/${userId}`,
+        {},
+        { withCredentials: true }
+      );
+      removeUserFromFeed(userId);
+    }catch(err){
+      console.log(err.message)
+    }
   };
 
   const nextImage = (userId, total) => {

@@ -41,9 +41,7 @@ const UpdateProfile = () => {
       gender,
       age: Number(age),
       about,
-      skills: skills
-        ? skills.split(",").map((s) => s.trim()).filter(Boolean)
-        : [],
+      skills: skills ? skills.split(",").map((s) => s.trim()).filter(Boolean) : [],
       profilePicture,
       images: images
         ? images.split(",").map((img) => img.trim()).filter(Boolean)

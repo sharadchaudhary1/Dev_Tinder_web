@@ -42,7 +42,7 @@ const Login = () => {
             onSubmit={(e) => handleSubmit(e)}
             className="flex  flex-col  bg-[radial-gradient(circle,_#fff7ed,_#ffe4e6,_#fbcfe8)]"
           >
-            <h2 className="text-2xl mb-3  text-center ">Login to Matchify❤️</h2>
+            <h2 className="text-2xl mb-3  text-center ">Login to TrueBond❤️</h2>
 
             <label className="block text-sm font-medium text-gray-600">
               Email

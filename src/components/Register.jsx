@@ -71,7 +71,7 @@ export const Register = () => {
         <form onSubmit={handleSubmit} className="flex flex-col gap-3">
           
           <h2 className="text-2xl text-center font-semibold text-gray-800">
-            Register on Matchify ❤️
+            Register on TrueBond ❤️
           </h2>
 
           <input

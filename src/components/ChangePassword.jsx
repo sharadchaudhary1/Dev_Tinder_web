@@ -49,6 +49,8 @@ const ChangePassword = () => {
            try{
 
                const res=await axios.patch(`${import.meta.env.VITE_API_URL}/profile/passwordupdate`,newpass,{withCredentials:true})
+
+               navigate("/profile")
              
            }
            catch(err){

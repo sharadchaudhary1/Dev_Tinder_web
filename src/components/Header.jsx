@@ -52,7 +52,8 @@ const Header = () => {
     <>
     <header className="bg-pink-500 text-white px-4 py-3 flex items-center justify-between shadow">
       <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-        <span className="text-yellow-300">Matchify❤️ </span>
+        <span className="text-yellow-300">TrueBond </span>
+        <img src="/TrueBond.png" alt="logo" className="w-6 h-6 rounded"/>
       </Link>
 
        
@@ -66,7 +67,7 @@ const Header = () => {
                          hover:ring-2 hover:ring-green-500 
                          transition"
             >
-              {user.firstname?.charAt(0).toUpperCase()}
+              {user?.profilePicture ? <img src={user.profilePicture} alt="profile" className="w-full h-full rounded-full"/> : user.firstname?.charAt(0).toUpperCase()}
             </button>
           )}
 

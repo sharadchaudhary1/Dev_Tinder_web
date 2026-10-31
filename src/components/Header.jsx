@@ -52,7 +52,7 @@ const Header = () => {
     <>
     <header className="bg-pink-500 text-white px-4 py-3 flex items-center justify-between shadow">
       <Link to="/" className="flex items-center gap-2 font-bold text-xl">
-        <span className="text-yellow-300">TrueBond </span>
+        <span className="text-yellow-300">Matchify❤️ </span>
         <img src="/TrueBond.png" alt="logo" className="w-6 h-6 rounded"/>
       </Link>
 

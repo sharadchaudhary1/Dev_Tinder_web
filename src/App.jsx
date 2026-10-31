@@ -9,6 +9,7 @@ import Requests from "./components/Requests"
 import Connections from "./components/Connections"
 import Chat from "./components/Chat"
 import Feed from "./components/Feed"
+import CallOverlay from "./components/CallOverlay"
 // import VideoCall from "./components/VideoCall"
 // import IncomingCallPopup from "./components/IncomingCallPopup"
 
@@ -19,8 +20,8 @@ function App() {
 
   return (
     <>
-
-       {/* <IncomingCallPopup /> */}
+     <CallOverlay/>
+      
      <Routes>
 
 

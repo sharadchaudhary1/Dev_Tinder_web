@@ -15,7 +15,8 @@ import { createSocketConnection } from '../utils/socket';
 import MessageItem from './MessageItem'
 import UserStatusIndicator from './UserStatusIndicator'
 import TypingIndicator from './TypingIndicator'
-
+import { MdCall, MdVideocam } from "react-icons/md";
+import { useCall } from "../context/CallContext";
 
 const Chat = () => {
   const { id } = useParams()
@@ -40,6 +41,8 @@ const Chat = () => {
   const socketRef = useRef(null);
 
   const userId = user?._id
+
+  const { startCall } = useCall();
   // const senderId = userId
 
   // Create socket connection
@@ -484,6 +487,11 @@ const Chat = () => {
               lastSeen={userStatus.lastSeen}
               formatLastSeen={formatLastSeen}
             />
+          </div>
+
+          <div className="ml-auto flex gap-3">
+           <button onClick={() => startCall(id, "audio")} disabled={!userStatus.isOnline}><MdCall size={24}/></button>
+           <button onClick={() => startCall(id, "video")} disabled={!userStatus.isOnline}><MdVideocam size={24}/></button>
           </div>
         </div>
       </div>

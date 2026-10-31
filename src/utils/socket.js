@@ -15,6 +15,7 @@ export const createSocketConnection = () => {
     reconnectionDelay: 1000,
     reconnectionDelayMax: 5000,
     reconnectionAttempts: 5,
+    withCredentials: true,
     transports: ['websocket', 'polling']
   })
 

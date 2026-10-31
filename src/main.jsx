@@ -4,16 +4,21 @@ import './index.css'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext.jsx'
+import { SocketProvider } from './context/SocketContext.jsx'
+import { CallProvider } from './context/CallContext.jsx'
 // import { CallProvider } from './context/CallContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AuthProvider>
-   {/* <CallProvider> */}
+    <AuthProvider>   
    <BrowserRouter>
+   <SocketProvider>
+    <CallProvider>
     <App />
+    </CallProvider>
+   </SocketProvider> 
    </BrowserRouter>
-   {/* </CallProvider> */}
+ 
     </AuthProvider>
   </StrictMode>,
 )

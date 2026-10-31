@@ -1,7 +1,4 @@
 
-
-
-
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -11,7 +8,7 @@ import { AiOutlinePaperClip } from "react-icons/ai"
 import { GrClose } from "react-icons/gr"
 import { FaArrowDown } from "react-icons/fa";
 import { AuthContext } from '../context/AuthContext';
-import { createSocketConnection } from '../utils/socket';
+import { SocketContext } from '../context/SocketContext';
 import MessageItem from './MessageItem'
 import UserStatusIndicator from './UserStatusIndicator'
 import TypingIndicator from './TypingIndicator'
@@ -38,35 +35,30 @@ const Chat = () => {
   const typingTimeoutRef = useRef(null)
   const pollIntervalRef = useRef(null)
   const { user } = useContext(AuthContext)
-  const socketRef = useRef(null);
+  // Use the ONE app-wide socket (SocketProvider) instead of opening a second one.
+  // A second socket per chat page broke online status and could drop active calls.
+  const socket = useContext(SocketContext)
+  const socketRef = useRef(null)
+  socketRef.current = socket
 
   const userId = user?._id
 
   const { startCall } = useCall();
-  // const senderId = userId
 
-  // Create socket connection
+  // Stop the message polling when leaving the page
   useEffect(() => {
-    socketRef.current = createSocketConnection()
-
-    if (socketRef.current && userId) {
-      socketRef.current.emit("register-user", userId)
-    }
-
-
     return () => {
       if (pollIntervalRef.current) {
         clearInterval(pollIntervalRef.current)
       }
-      socketRef.current?.disconnect()
     }
-  }, [userId])
+  }, [])
 
   // Join chat room
   useEffect(() => {
     if (!socketRef.current || !userId || !id) return;
     socketRef.current.emit("joinChat", { userId, targetUserId: id });
-  }, [id, userId]);
+  }, [id, userId, socket]);
 
   // Fetch chat user details
   useEffect(() => {
@@ -197,7 +189,7 @@ const Chat = () => {
       return () => {
         socketRef.current?.off("user:status:changed", handleStatusChange)
       }
-    }, [id])
+    }, [id, socket])
 
 
       // Listen to typing indicator
@@ -215,7 +207,7 @@ const Chat = () => {
     return () => {
       socketRef.current?.off("user:typing:status", handleTypingStatus)
     }
-  }, [id])
+  }, [id, socket])
 
 
   // scroll to bottom
@@ -605,9 +597,3 @@ const Chat = () => {
 }
 
 export default Chat;
-
-
-
-
-
-
